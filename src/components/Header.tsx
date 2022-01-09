@@ -67,7 +67,7 @@ export function Header (){
 
 
             >
-                <HStack 
+                <HStack // esse Hstack e para deixa em linha o Stack e em coluna
                     spacing='8'
                     mx='8'
                     pr='8' // esse padding e margin e para fazer um linha para seprar o icon do perfil

@@ -15,12 +15,12 @@ export function SideBar(){
                         GERAL
                     </Text>
                     <Stack spacing='4' mt='8' align='stretch'>
-                        <Link display='flex' align='center'     >
+                        <Link display='flex' align='center' href='/dashboard'    >
                             <Icon  as={RiDashboardLine} fontSize='20'/>
                             <Text ml='4' fontWeight="medium">Dashboard</Text>
                         </Link>
 
-                        <Link display='flex' align='center'     >
+                        <Link href='/users' display='flex' align='center'     >
                             <Icon  as={RiContactsLine} fontSize='20'/>
                             <Text ml='4' fontWeight="medium">Usuarios</Text>
                         </Link>
