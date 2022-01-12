@@ -7,9 +7,9 @@ export default function NotificationsNav(){
 
     return(
         <HStack // esse Hstack e para deixa em linha o Stack e em coluna
-        spacing='8'
-        mx='8'
-        pr='8' // esse padding e margin e para fazer um linha para seprar o icon do perfil
+        spacing={['6', '8']}
+        mx={['6', '8']}
+        pr={['6', '8']} // esse padding e margin e para fazer um linha para seprar o icon do perfil
         py='1'
         color='gray.300'
         borderRightWidth={1}

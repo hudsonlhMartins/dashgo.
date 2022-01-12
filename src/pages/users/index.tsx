@@ -1,12 +1,17 @@
-import { Box, Button, Checkbox, Flex, Heading, Icon, Table, Tbody, Td, Text, Th, Thead, Tr } from "@chakra-ui/react";
-import Link from "next/link";
+import { Box, useBreakpointValue, Button, Checkbox, Flex, Heading, Icon, Table, Tbody, Td, Text, Th, Thead, Tr } from "@chakra-ui/react";
 import { RiAddLine, RiPencilLine } from "react-icons/ri";
 import { Header } from "../../components/Header";
 import Pagination from "../../components/Pagination";
 import { SideBar } from "../../components/Sidebar";
 
+import Link from 'next/link'
+
 export default function UsersList(){
 
+    const isWideVersion = useBreakpointValue({
+        base: false,
+        lg: true
+    })
 
     return(
         <Box>
@@ -32,38 +37,38 @@ export default function UsersList(){
                             Usuarios
                         </Heading>
 
-                        <Link href='/users/create'>
-                        
-                            <Button
-                                as='a'
-                                size='sm'
-                                fontSize='sm'
-                                colorScheme='pink'
-                                // colocar icon a esuqerda o button tem essa prop
-                                leftIcon={<Icon as={RiAddLine} fontSize='20' />}
-                                cursor='pointer'
-                            >
-                                Criar novo
+                        <Link href='/users/create' passHref>
+                                <Button
+                                    as='a'
+                                    size='sm'
+                                    fontSize='sm'
+                                    colorScheme='pink'
+                                    // colocar icon a esuqerda o button tem essa prop
+                                    leftIcon={<Icon as={RiAddLine} fontSize='20' />}
+                                    cursor='pointer'
+                                >
+                                    Criar novo
 
-                            </Button>
+                                </Button>
                         </Link>
                     </Flex>
                     
                     <Table colorScheme='whiteAlpha'>
                         <Thead>
                             <Tr>
-                                <Th px='6' color='gray.300' width='8'>
+                                <Th px={['4', '4', '6']} color='gray.300' width='8'>
                                     <Checkbox colorScheme='pink' />
                                 </Th>
                                 <Th>Usuario</Th>
-                                <Th>Data de cadastro</Th>
-                                <Th width='8'></Th>
+                                {isWideVersion && <Th>Data de cadastro</Th>} 
+                                {isWideVersion && <Th width='8'></Th>}
+                               
                             </Tr>
                         </Thead>
 
                         <Tbody>
                             <Tr>
-                                <Td px='6'>
+                                <Td px={['4', '4', '6']}>
                                     <Checkbox colorScheme='pink' />
                                 </Td>
                                 <Td>
@@ -72,20 +77,24 @@ export default function UsersList(){
                                         <Text fontSize='sm' color='gray.300'>hudson.martins@gmail.com</Text>
                                     </Box>
                                 </Td>
-                                <Td>19/01/2022</Td>
-                                <Td>
-                                    <Button
-                                        size='sm'
-                                        fontSize='sm'
-                                        colorScheme='purple'
-                                        // colocar icon a esuqerda o button tem essa prop
-                                        leftIcon={<Icon as={RiPencilLine} fontSize='16' />}
-                                        cursor='pointer'
-                                    >
-                                        Edita
+                                {isWideVersion && (<Td>19/01/2022</Td>)}
 
-                                    </Button>
-                                </Td>
+                                {isWideVersion && (
+                                    <Td>
+                                        <Button
+                                            size='sm'
+                                            fontSize='sm'
+                                            colorScheme='purple'
+                                            // colocar icon a esuqerda o button tem essa prop
+                                            leftIcon={<Icon as={RiPencilLine} fontSize='16' />}
+                                            cursor='pointer'
+                                        >
+                                            Edita
+
+                                        </Button>
+                                    </Td>
+                                )}
+                                
                             </Tr>
                         </Tbody>
                     </Table>

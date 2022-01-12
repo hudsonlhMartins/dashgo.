@@ -4,7 +4,7 @@ export default function Logo (){
 
     return(
         <Text
-        fontSize='3xl'
+        fontSize={['2xl', '3xl']}
         fontWeight='bold'
         letterSpacing='tight'
         w='64'
@@ -14,7 +14,7 @@ export default function Logo (){
             as='span'
             color='pink.500'
             ml='1'
-            fontSize='5xl'
+            fontSize='2xl'
         >   
             .
         </Text>

@@ -1,10 +1,31 @@
-import {Box, Stack} from "@chakra-ui/react";
-import {RiContactsLine, RiDashboardLine, RiGitMergeLine, RiInputMethodLine} from 'react-icons/ri'
-import NavLinks from "./NavLinks";
-
-import NavSection from './NavSection'
+import {Box, useBreakpointValue, Drawer, DrawerOverlay, DrawerContent, DrawerCloseButton, DrawerHeader, DrawerBody } from "@chakra-ui/react";
+import { useSidebarDrawer } from "../../context/SidebarDrawerContext";
+import SideBarNav from "./SideBarNav";
 
 export function SideBar(){
+
+    const {isOpen, onClose} = useSidebarDrawer()
+
+    const isDrawerSidebar = useBreakpointValue({
+        base: true,
+        lg: false
+    })
+
+
+    if(isDrawerSidebar){
+        return (<Drawer isOpen={isOpen} placement='left' onClose={onClose}>
+            <DrawerOverlay>
+                <DrawerContent bg='gray.800' p='4'>
+                    <DrawerCloseButton />
+                    <DrawerHeader>Navegação</DrawerHeader>
+                    <DrawerBody>
+                        <SideBarNav/>
+                    </DrawerBody>
+                </DrawerContent>
+            </DrawerOverlay>
+        </Drawer>
+        )
+    }
 
     return(
         <Box
@@ -12,32 +33,8 @@ export function SideBar(){
             w='64'
             mr='8'
         >
-            <Stack spacing='12' align='flex-start' >
-
-                <NavSection title='GERAL'>
-                    <NavLinks icon={RiDashboardLine} >
-                        Dashboard
-                    </NavLinks>
-
-                    <NavLinks icon={RiContactsLine} >
-                        Usuarios
-                    </NavLinks>
-                </NavSection>
-
-
-                <NavSection title='AUTOMAÇÂO' >
-                
-                    <NavLinks icon={RiInputMethodLine}>
-                        Forularios
-                    </NavLinks>
-
-                    <NavLinks icon={RiGitMergeLine}>
-                        Automação
-                    </NavLinks>
-                    
-                </NavSection>
-                
-            </Stack>
+            
+            <SideBarNav />
           
 
         </Box>
