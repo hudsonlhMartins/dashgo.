@@ -22,7 +22,6 @@ export default function ActiveLink ({
     // isso aqui vai return a rota que estamos
 
     let isActive = false
-    console.log(rest.href == asPath)
 
     if(shouldMatchExactHref && (asPath == rest.href || asPath == rest.as)){
         isActive = true
